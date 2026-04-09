@@ -364,94 +364,354 @@ footer a:hover {
     }
 }
 
-/* --- Page Projets --- */
+/* CSS COMPLET POUR CORRESPONDRE À L'IMAGE */
 
-#Projets {
-    padding: 4rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+        :root {
+            --primary-color: #6c5ce7; /* Le violet de l'image */
+            --text-main: #333;
+            --text-secondary: #777;
+            --bg-card: #fff;
+            --bg-footer: #6c5ce7; /* Même violet pour le footer */
+            --bg-body: #f9f9f9;
+            --text-footer: #fff;
+        }
 
-.projets-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
-    margin-top: 3rem;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.projets-card {
-    background: white;
-    border-radius: 15px;
-    padding: 1.5rem;
-    text-align: center;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-.projets-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(108, 99, 255, 0.2); /* Ombre légère de la couleur violette */
-}
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
 
-.projets-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 1.2rem;
-}
+        /* --- Header & Nav --- */
+        header {
+            background-color: #fff;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
 
-.projets-card h3 {
-    color: var(--violet-doux);
-    font-size: 1.5rem;
-    margin-bottom: 0.8rem;
-}
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
 
-.projets-card p {
-    color: var(--gris-fonce);
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-    min-height: 50px; /* Aligne la hauteur des textes */
-}
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
 
-/* Style des liens/boutons dans les cartes */
-.projets-card a {
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 15px;
-    margin: 0 5px;
-    border-radius: 5px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-}
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
 
-/* Bouton Code (GitHub) */
-.projets-card a:first-of-type {
-    background-color: var(--gris-clair);
-    color: var(--gris-tres-fonce);
-}
+        header nav a {
+            font-size: 0.95rem;
+            color: #555;
+            padding: 5px 0;
+            font-weight: 500;
+        }
 
-.projets-card a:first-of-type:hover {
-    background-color: var(--gris-tres-fonce);
-    color: white;
-}
+        header nav a:hover {
+            color: var(--primary-color);
+        }
 
-/* Bouton Démo */
-.projets-card a:last-of-type {
-    background-color: var(--violet-doux);
-    color: white;
-}
+        header nav a.active {
+            color: var(--primary-color);
+            position: relative;
+        }
 
-.projets-card a:last-of-type:hover {
-    background-color: var(--violet-fonce);
-}
+        header nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
 
-.projets-card i {
-    margin-right: 5px;
-}
+        /* --- Main Content --- */
+        main {
+            flex-grow: 1;
+            padding: 80px 0;
+        }
 
-/* Correction responsive pour le titre principal */
-#Projets h2 {
-    margin-bottom: 2rem;
-}
+        .projets-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* La petite barre de soulignement violette de l'image */
+        .title-underline {
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 0 auto;
+            margin-top: -30px; /* Aligner sous le titre */
+            margin-bottom: 60px; /* Espace après */
+            border-radius: 2px;
+        }
+
+        .projets-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        /* --- Project Card (LA PARTIE CLÉ) --- */
+        .projets-card {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .projets-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .card-image-wrapper {
+            width: 100%;
+            height: 200px; /* Hauteur fixe pour toutes les images */
+            overflow: hidden;
+        }
+
+        .card-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Recadre l'image pour remplir le conteneur */
+            display: block;
+        }
+
+        .card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .projets-card h3 {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .projets-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            flex-grow: 1; /* Pousse les tags et liens vers le bas */
+        }
+
+        /* --- Tech Tags (Nouveau) --- */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            background-color: #f3f0ff; /* Léger fond violet pour les tags */
+            color: var(--primary-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        /* --- Action Links & Icons --- */
+        .card-actions {
+            border-top: 1px solid #eee; /* La ligne de séparation */
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .action-link {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Espace entre icône et texte */
+        }
+
+        .action-link:hover {
+            color: var(--primary-color);
+        }
+
+        .action-link i {
+            font-size: 1.1rem;
+        }
+
+        /* Icônes spécifiques pour s'aligner sur l'image */
+        .fa-github { color: #333; }
+        .fa-external-link-alt { color: var(--primary-color); }
+        .fa-clock { color: #a0a0a0; } /* Gris pour 'Bientôt' */
+        .fa-pencil-ruler { color: var(--primary-color); } /* Pour Design */
+        .fa-eye { color: var(--primary-color); } /* Pour Aperçu */
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--bg-footer);
+            color: var(--text-footer);
+            padding: 40px 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            font-size: 1.3rem;
+            opacity: 0.8;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        /* --- Responsive (Basique pour démo) --- */
+        @media (max-width: 992px) {
+            .projets-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .projets-grid {
+                grid-template-columns: 1fr;
+            }
+            .header-container, .footer-container {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            header nav ul {
+                gap: 15px;
+            }
+        }
+/* CSS PRÉCIS POUR LE PIED DE PAGE (FOOTER) */
+
+        /* Styles de base pour la page (facultatif, pour la démo) */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main { flex-grow: 1; } /* Pousse le footer vers le bas */
+
+        /* --- Le Pied de Page (Footer) --- */
+        footer {
+            background-color: #6c5ce7; /* Le violet exact de l'image */
+            color: white;              /* Tout le texte en blanc */
+            padding: 40px 0;           /* Espace en haut et en bas pour centrer verticalement */
+            width: 100%;
+            margin-top: auto;          /* S'assure que le footer est toujours en bas de la page */
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;    /* Aligne le texte au-dessus des icônes */
+            align-items: center;      /* Centre tout horizontalement */
+            justify-content: center;   /* Centre tout verticalement (si le conteneur a une hauteur) */
+            text-align: center;       /* Centre le texte lui-même */
+            padding: 0 20px;
+        }
+
+        /* Style du texte de copyright */
+        .footer-container p {
+            font-size: 0.95rem;
+            font-weight: 400;
+            margin-bottom: 25px;       /* Espace précis entre le texte et les icônes */
+            opacity: 0.9;              /* Léger effet pour correspondre à l'image */
+        }
+
+        /* --- Les Icônes de Réseaux Sociaux --- */
+        .social-links {
+            display: flex;
+            gap: 25px;                 /* Espace horizontal précis entre les icônes */
+            justify-content: center;    /* S'assure que les icônes sont centrées entre elles */
+        }
+
+        .social-links a {
+            color: white;              /* Force toutes les icônes en blanc */
+            font-size: 1.6rem;         /* Taille précise pour correspondre à l'image */
+            transition: transform 0.3s, opacity 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Petit effet au survol (optionnel mais recommandé) */
+        .social-links a:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+
+        /* --- Correction spécifique pour GitHub (pour qu'il soit blanc) --- */
+        /* Font Awesome peut appliquer des styles par défaut. Cette règle force le blanc. */
+        .fa-github {
+            color: white !important;
+        }
+    
