@@ -207,25 +207,251 @@ section h2::after {
 footer {
     margin: 3rem;
     background-color: var(--violet-doux);
-    padding: 3rem 0;
-    text-align: center;
+    low: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: white;
 }
 
-footer p {
+footer p { 
     color: white;
     margin-bottom: 1.2rem;
-}
+}    
 
 footer a {
     display: inline-block;
     font-size: 1.6rem;
     color: white;
     margin: 0 10px;
-    transition: color 0.3s ease, transform 0.2 ease;
+    transition: color 0.3s ease, transform 0.2s ease ;
+} 
+
+footer a:hover { 
+    color: var(--orange-vif);
+    transform: translateY(-3px);
 }
 
-footer a:hover {
-    color: var(--orange-vif)
-    tranform: translateY(-3px)
+/* --- Page Contact --- */
+
+.contact-main {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
 }
 
+.contact-section {
+    display: flex;
+    gap: 4rem;
+    max-width: 1000px;
+    width: 100%;
+    background: white;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-info h2 {
+    text-align: left;
+}
+
+.contact-info h2::after {
+    margin: 1rem 0; /* Aligne la barre violette à gauche */
+}
+
+.contact-links {
+    margin-top: 2rem;
+}
+
+.contact-links p {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--gris-tres-fonce);
+    margin-bottom: 1.5rem;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-social {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp { background-color: #25D366; }
+.telegram { background-color: #0088cc; }
+
+.btn-social:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
+
+/* Formulaire */
+.contact-form-container {
+    flex: 1;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-group label {
+    font-weight: 600;
+    color: var(--gris-fonce);
+}
+
+.input-group input {
+    padding: 12px;
+    border: 2px solid var(--gris-clair);
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: var(--violet-doux);
+}
+
+.btn-submit {
+    background-color: var(--violet-doux);
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: var(--violet-fonce);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .contact-section {
+        flex-direction: column;
+        padding: 2rem;
+        gap: 2rem;
+    }
+    
+    .social-buttons {
+        flex-direction: column;
+    }
+}
+
+/* --- Page Projets --- */
+
+#Projets {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.projets-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.projets-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.projets-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(108, 99, 255, 0.2); /* Ombre légère de la couleur violette */
+}
+
+.projets-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1.2rem;
+}
+
+.projets-card h3 {
+    color: var(--violet-doux);
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.projets-card p {
+    color: var(--gris-fonce);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    min-height: 50px; /* Aligne la hauteur des textes */
+}
+
+/* Style des liens/boutons dans les cartes */
+.projets-card a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+/* Bouton Code (GitHub) */
+.projets-card a:first-of-type {
+    background-color: var(--gris-clair);
+    color: var(--gris-tres-fonce);
+}
+
+.projets-card a:first-of-type:hover {
+    background-color: var(--gris-tres-fonce);
+    color: white;
+}
+
+/* Bouton Démo */
+.projets-card a:last-of-type {
+    background-color: var(--violet-doux);
+    color: white;
+}
+
+.projets-card a:last-of-type:hover {
+    background-color: var(--violet-fonce);
+}
+
+.projets-card i {
+    margin-right: 5px;
+}
+
+/* Correction responsive pour le titre principal */
+#Projets h2 {
+    margin-bottom: 2rem;
+}
